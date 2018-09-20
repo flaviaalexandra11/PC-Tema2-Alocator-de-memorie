@@ -1,0 +1,18 @@
+README
+
+Pentru a crea arena, am folosit functia malloc si pointerii v (de tip unsigned char) si t (de tip uint32_t pe care il vom folosi pentru modificarea datelor din sectiunile de gestiune. De asemenea, m.am folosit si de vectorul de p (de tip unsigned char) de N ale carui elemente sunt '0','d', sau 'g' (depinzand daca octetul respectiv este liber, de date, sau de gestiune) si de vectorul structura s care va tine minte pentru fiecare octet urmatoarele date despre blocul in care se afla: inndexul blocului curent, indecsii blocului anterior si urmator (daca acestea exista) si dimensiunea blocului curent.
+
+In functia INITIALIZE, alocam N octeti, tinem minte adresa de inceput in v si initializam s si p.
+In DUMP, afisam arena cu 16 octeti pe fiecare linie si spatiu intre octetii 8 si 9.
+
+Functia ALLOC, care foloseste la randul ei o "subfunctie" internalAlloc, parcurge p si cauta o secventa libera care sa cuprinda si sectiunea de gesiune si numarul de octeti cerut. In internalAlloc se actualizeaza datele din p, s si arena. Pentru arena se va folosi poiterul t pentru a modifica octetii din blocul de gestiune folosindu-se informatiile din s. Totodata este returnat si indexul unde incepe sectiunea de date a noului bloc alocat.
+
+In functia FREE, se actualizeaza simultan informatiile din s, p si din arena: in s, se modifica gestiunea vecinilor, iar toate elementele din blocul curent iau valoarea 0; in p, pozitiile care erau ocupate cu 'd', sau 'g' sunt reinitializate cu 0; cu ajutorul lui v se modifica sectiunea de date din arena, iar cu ajutorul lui t se modifica sectiunea de gestiune din arena. 
+
+FILL adauga informatia ceruta in arena pana cand dimensiunea "size" transmisa ca parametru este atinsa sau pana se ocupa toti octeti de date alocati. Acest lucru este actualizat si in p.
+
+In sfarsit, functia FINALIZE elivereaza memoria.
+
+Functia ALLOCALIGNED functioneaza la fel ca si functia ALLOC avand in plus conditia ca indexul sa fie aliniat la nr de octeti cerut.
+
+Popescu Flavia-Alexandra 311CD

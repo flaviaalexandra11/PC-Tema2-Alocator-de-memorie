@@ -1,0 +1,14 @@
+
+    O versiune simplificata a alocatorului de memorie, functioneaza precum functiile de malloc(), calloc() si free() din C, folosind alocare dinamica si pointeri.    
+
+    Pentru a-l folosi introduceti urmatoarele comenzi:
+
+    INITIALIZE <N> -> initializeaza o arena de N octeti (fiecare octet este initializat la 0, nu afiseaza nimic)
+    FINALIZE -> eliberarea memoriei (nu afiseaza nimic)
+    DUMP -> afisarea arenei (indicele curent in format hexa, cate 16 octeti pe fiecare rand).
+    ALLOC <SIZE> -> aloca SIZE octeti de memorie din arena, se va gasi prima zona libera valida si returneaza indexul de inceput al nlocului alocat
+    FREE <INDEX> -> elibereaza blocul de memorie al carei sectiuni de date incepe la pozitia INDEX
+    FILL <INDEX> <SIZE> <VALUE> -> seteaza SIZE octeti din arena la valoarea VALUE si va modifica octetii blocurilor incepand cu indexul index (informatia poate ocupa mai mult blocuri, dar nu suprascrie zona de gestiune)
+    
+    Observatie: Un bloc de memorie contine o sectiune de gestiune si una de date.
+    Pentru mai multe detalii asupra structurii arenei, cititi Tema2-Enunt.pdf, iar pentru explicatii suplimentare privind implementarea, README-ul atasat in arhiva.
